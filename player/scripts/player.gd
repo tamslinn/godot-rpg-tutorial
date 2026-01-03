@@ -1,6 +1,12 @@
 class_name Player extends CharacterBody2D
 
 var cardinal_direction : Vector2 = Vector2.DOWN
+
+const directions = [Vector2.RIGHT, 
+					Vector2.DOWN, 
+					Vector2.LEFT, 
+					Vector2.UP ]
+
 var direction : Vector2 = Vector2.ZERO
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -25,15 +31,15 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func set_direction() -> bool:
-	var new_direction : Vector2 = cardinal_direction
+	
 	if direction == Vector2.ZERO:
 		return false
+		
+	## times by cardinal direction to keep facing in first direction if you press two keys	
+	var direction_id : int = int( round ((direction + cardinal_direction * 0.1).angle() / TAU * directions.size()))
 	
-	if direction.y == 0:
-		new_direction = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
-	else:
-		new_direction = Vector2.UP if direction.y < 0 else Vector2.DOWN	
-	
+	var new_direction = directions[direction_id]
+		
 	if new_direction == cardinal_direction:
 		return false
 	cardinal_direction = new_direction	

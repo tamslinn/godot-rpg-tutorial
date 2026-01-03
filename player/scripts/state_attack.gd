@@ -10,7 +10,7 @@ var attacking : bool = false
 @onready var animation_player : AnimationPlayer = $"../../AnimationPlayer"
 @onready var attack_anim : AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
 @onready var audio_player: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
-@onready var hurt_box: HurtBox = $"../../Interactions/HurtBox"
+@onready var hurt_box: HurtBox = %AttackHurtBox
 
 ## What happens when the player enters this state
 func enter() -> void:
