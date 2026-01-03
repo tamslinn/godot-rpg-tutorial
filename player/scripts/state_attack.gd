@@ -10,6 +10,7 @@ var attacking : bool = false
 @onready var animation_player : AnimationPlayer = $"../../AnimationPlayer"
 @onready var attack_anim : AnimationPlayer = $"../../Sprite2D/AttackEffectSprite/AnimationPlayer"
 @onready var audio_player: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
+@onready var hurt_box: HurtBox = $"../../Interactions/HurtBox"
 
 ## What happens when the player enters this state
 func enter() -> void:
@@ -19,10 +20,14 @@ func enter() -> void:
 	audio_player.stream = attack_sound
 	audio_player.pitch_scale = randf_range(0.9,1.1)
 	audio_player.play()
+	
 	animation_player.animation_finished.connect(end_attack)
+	await get_tree().create_timer(0.075).timeout
+	hurt_box.monitoring = true
 	
 ## What happens when the player exits this state	
 func exit() -> void:
+	hurt_box.monitoring = false
 	animation_player.animation_finished.disconnect(end_attack)
 	
 ## What happens during the _process update in this state	
