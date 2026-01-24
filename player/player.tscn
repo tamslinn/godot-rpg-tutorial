@@ -478,7 +478,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 16
+collision_mask = 272
 motion_mode = 1
 wall_min_slide_angle = 0.17453292
 script = ExtResource("1_rkbax")
