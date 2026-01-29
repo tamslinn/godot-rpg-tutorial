@@ -17,12 +17,13 @@ func init() -> void:
 
 ## What happens when the player enters this state
 func enter() -> void:
-	player.update_animation("stun")
+	
 	player.animation_player.animation_finished.connect(_animation_finished)
 	
 	direction = player.global_position.direction_to(hurt_box.global_position)
 	player.velocity = direction * -knockback_speed
 	player.set_direction()
+	player.update_animation("stun")
 	
 	player.make_invulnerable(invulnerable_duration)
 	player.effect_animation_player.play("damaged")
@@ -33,7 +34,8 @@ func exit() -> void:
 	next_state = null
 	
 ## What happens during the _process update in this state	
-func process(_delta: float) -> State:
+func process(delta: float) -> State:
+	player.velocity -= player.velocity * decelerate_speed * delta
 	return next_state
 	
 ## What happens during the _physics update in this state	
@@ -50,5 +52,6 @@ func _player_damaged(hurt_box_in: HurtBox) -> void:
 	pass
 	
 func _animation_finished(name: String) -> void:
+	
 	next_state = idle_state
 	

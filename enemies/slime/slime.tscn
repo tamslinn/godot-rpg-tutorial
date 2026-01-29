@@ -19,7 +19,7 @@ radius = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_57eei"]
 radius = 5.0
-height = 24.0
+height = 20.0
 
 [sub_resource type="Animation" id="Animation_6326o"]
 length = 0.001
@@ -724,13 +724,6 @@ collision_layer = 256
 collision_mask = 16
 script = ExtResource("1_6326o")
 
-[node name="HurtBox" parent="." unique_id=2144872833 instance=ExtResource("2_kag0e")]
-position = Vector2(0, -7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=905082931]
-shape = SubResource("CircleShape2D_v3fw7")
-debug_color = Color(0.88492155, 0.017601607, 0.8054426, 0.41960785)
-
 [node name="HitBox" parent="." unique_id=367277970 instance=ExtResource("3_v3fw7")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1953286812]
@@ -739,6 +732,7 @@ shape = SubResource("CircleShape2D_v3fw7")
 debug_color = Color(0.88492155, 0.017601607, 0.8054426, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=752206272]
+position = Vector2(0, -1)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_57eei")
 
@@ -753,6 +747,13 @@ modulate = Color(0.70980394, 0.2509804, 0, 0.73333335)
 show_behind_parent = true
 position = Vector2(0, 22)
 texture = ExtResource("2_6326o")
+
+[node name="HurtBox" parent="." unique_id=2144872833 instance=ExtResource("2_kag0e")]
+position = Vector2(0, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=905082931]
+shape = SubResource("CircleShape2D_v3fw7")
+debug_color = Color(0.88492155, 0.017601607, 0.8054426, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1144946783]
 libraries/ = SubResource("AnimationLibrary_kag0e")
