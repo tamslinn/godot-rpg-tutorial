@@ -7,6 +7,10 @@ const PLAYER = preload("uid://cg5do4pyqt1o6")
 
 func _ready() -> void:
 	add_player_instance()
+	
+	#in case scene does not have a spawn point
+	await get_tree().create_timer(0.2).timeout
+	player_spawned = true
 
 
 func add_player_instance() -> void:
