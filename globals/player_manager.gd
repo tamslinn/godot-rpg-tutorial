@@ -18,6 +18,11 @@ func add_player_instance() -> void:
 	add_child(player)
 	pass
 	
+func set_player_hp(hp: int, max_hp: int) -> void:
+	player.max_hp = max_hp
+	player.hp = hp
+	player.update_hp(0)
+	
 func set_player_position(position : Vector2) -> void:
 	print("setting player position")
 	player.global_position = position
