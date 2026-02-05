@@ -1,6 +1,25 @@
 [gd_scene format=3 uid="uid://dtwr7rodrkria"]
 
 [ext_resource type="Script" uid="uid://di03e8oot84e8" path="res://gui/pause_menu/pause_menu.gd" id="1_rwe7i"]
+[ext_resource type="Texture2D" uid="uid://blhvk5srjg5ga" path="res://items/sprites/items.png" id="2_1wcnx"]
+[ext_resource type="Script" uid="uid://da64hf8eguifm" path="res://gui/pause_menu/inventory/scripts/inventory_ui.gd" id="3_ddhtv"]
+[ext_resource type="PackedScene" uid="uid://cp3w4xee3ehn6" path="res://gui/pause_menu/inventory/inventory_slot.tscn" id="3_u4fh8"]
+[ext_resource type="Resource" uid="uid://cb1bve0r73af3" path="res://gui/pause_menu/inventory/player_inventory.tres" id="4_t7424"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4fh8"]
+atlas = ExtResource("2_1wcnx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ddhtv"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_u4fh8")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1471083051]
 process_mode = 3
@@ -14,36 +33,85 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18039216, 0.18039216, 0.18039216, 0.7921569)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=1096090022]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect" unique_id=1844643611]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -67.5
-offset_top = -59.5
-offset_right = 67.5
-offset_bottom = 59.5
+offset_left = -217.0
+offset_top = 82.0
+offset_right = -81.0
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonSave" type="Button" parent="ColorRect/VBoxContainer" unique_id=525393890]
+[node name="ButtonSave" type="Button" parent="ColorRect/HBoxContainer" unique_id=525393890]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "Save"
 
-[node name="ButtonLoad" type="Button" parent="ColorRect/VBoxContainer" unique_id=586961309]
+[node name="ButtonLoad" type="Button" parent="ColorRect/HBoxContainer" unique_id=586961309]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "Load"
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect" unique_id=496225771]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 69.0
+offset_right = 217.0
+offset_bottom = 157.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ddhtv")
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/PanelContainer" unique_id=1275726947]
+layout_direction = 2
+layout_mode = 2
+columns = 5
+script = ExtResource("3_ddhtv")
+data = ExtResource("4_t7424")
+
+[node name="InventorySlot" parent="ColorRect/PanelContainer/GridContainer" unique_id=1867374967 instance=ExtResource("3_u4fh8")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="ColorRect/PanelContainer/GridContainer" unique_id=1978705819 instance=ExtResource("3_u4fh8")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="ColorRect/PanelContainer/GridContainer" unique_id=1313254196 instance=ExtResource("3_u4fh8")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="ColorRect/PanelContainer/GridContainer" unique_id=533041792 instance=ExtResource("3_u4fh8")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="ColorRect/PanelContainer/GridContainer" unique_id=946270805 instance=ExtResource("3_u4fh8")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="ColorRect/PanelContainer/GridContainer" unique_id=2003762160 instance=ExtResource("3_u4fh8")]
+layout_mode = 2
 
 [node name="Label" type="Label" parent="." unique_id=256502200]
 modulate = Color(1, 1, 1, 0.38039216)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -33.0
-offset_top = 32.0
-offset_right = 34.0
-offset_bottom = 55.0
+offset_left = -216.0
+offset_top = 27.0
+offset_right = -149.0
+offset_bottom = 50.0
 grow_horizontal = 2
 text = "[paused]"
+
+[node name="ItemDescription" type="Label" parent="." unique_id=1282684060]
+modulate = Color(1, 1, 1, 0.38039216)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -218.0
+offset_top = 163.0
+offset_right = -27.0
+offset_bottom = 204.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "This red drink restores your health"
+autowrap_mode = 2
