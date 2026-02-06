@@ -3,7 +3,7 @@ extends Node
 var player : Player
 var player_spawned = false
 const PLAYER = preload("uid://cg5do4pyqt1o6")
-
+const INVENTORY : InventoryData = preload("res://gui/pause_menu/inventory/player_inventory.tres")
 
 func _ready() -> void:
 	add_player_instance()

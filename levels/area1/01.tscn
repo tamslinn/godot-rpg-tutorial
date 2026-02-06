@@ -4,6 +4,11 @@
 [ext_resource type="Script" uid="uid://dprumt1umwsrh" path="res://levels/scripts/level.gd" id="1_lvlyw"]
 [ext_resource type="PackedScene" uid="uid://dmj7woknd8fu4" path="res://levels/player_spawn.tscn" id="2_7m3nb"]
 [ext_resource type="PackedScene" uid="uid://ddeaewgbv650n" path="res://levels/level_transition.tscn" id="4_y63o5"]
+[ext_resource type="PackedScene" uid="uid://5ggdgtqlpihy" path="res://items/item_pickup/item_pickup.tscn" id="5_0piko"]
+[ext_resource type="Resource" uid="uid://c6fsgh0jq6o07" path="res://items/stone.tres" id="6_hrjbf"]
+[ext_resource type="Resource" uid="uid://cf4yqqf0vlnhx" path="res://items/potion.tres" id="7_hrjbf"]
+[ext_resource type="Resource" uid="uid://d3dt7t7ts6ncg" path="res://items/gem.tres" id="8_vtwgx"]
+[ext_resource type="Resource" uid="uid://dpiuskkngufd3" path="res://items/apple.tres" id="9_oryfo"]
 
 [node name="01" type="Node2D" unique_id=570145629]
 script = ExtResource("1_lvlyw")
@@ -24,3 +29,23 @@ position = Vector2(480, 144)
 level = "uid://7sub08txd55c"
 size = 1
 side = 1
+
+[node name="ItemPickup" parent="." unique_id=889963014 instance=ExtResource("5_0piko")]
+position = Vector2(257, 44)
+item_data = ExtResource("6_hrjbf")
+
+[node name="ItemPickup2" parent="." unique_id=1404085943 instance=ExtResource("5_0piko")]
+position = Vector2(286, 45)
+item_data = ExtResource("6_hrjbf")
+
+[node name="ItemPickup3" parent="." unique_id=657017206 instance=ExtResource("5_0piko")]
+position = Vector2(429, 198)
+item_data = ExtResource("7_hrjbf")
+
+[node name="ItemPickup4" parent="." unique_id=1316602333 instance=ExtResource("5_0piko")]
+position = Vector2(402, 198)
+item_data = ExtResource("8_vtwgx")
+
+[node name="ItemPickup5" parent="." unique_id=806133423 instance=ExtResource("5_0piko")]
+position = Vector2(149, 186)
+item_data = ExtResource("9_oryfo")
